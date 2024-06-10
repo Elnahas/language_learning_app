@@ -6,9 +6,15 @@ import 'package:language_learning_app/core/theming/app_colors.dart';
 import '../helper/font_weight_helper.dart';
 
 abstract class AppTextStyle {
+
   static TextStyle get font22DarkMedium => GoogleFonts.fredoka(
       color: AppColors.dark,
       fontSize: 22.sp,
+      fontWeight: FontWeightHelper.medium);
+
+        static TextStyle get font15DarkMedium => GoogleFonts.fredoka(
+      color: AppColors.dark,
+      fontSize: 15.sp,
       fontWeight: FontWeightHelper.medium);
 
   static TextStyle get font15Dark60Regular => GoogleFonts.fredoka(
