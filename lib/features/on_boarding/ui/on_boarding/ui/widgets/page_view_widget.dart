@@ -1,11 +1,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:language_learning_app/features/on_boarding/ui/widgets/on_boarding_item.dart';
+import 'package:language_learning_app/features/on_boarding/ui/on_boarding/ui/widgets/on_boarding_item.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../../../core/theming/app_colors.dart';
-import '../../data/on_boarding_model.dart';
+import '../../../../../../core/theming/app_colors.dart';
+import '../../../../data/on_boarding_model.dart';
 
 class PageViewWidget extends StatelessWidget {
   const PageViewWidget({
