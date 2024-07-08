@@ -17,6 +17,16 @@ abstract class AppTextStyle {
       fontSize: 15.sp,
       fontWeight: FontWeightHelper.medium);
 
+              static TextStyle get font15DarkRegular => GoogleFonts.fredoka(
+      color: AppColors.dark,
+      fontSize: 15.sp,
+      fontWeight: FontWeightHelper.regular);
+
+        static TextStyle get font15GrayDark50Medium => GoogleFonts.fredoka(
+      color: AppColors.grayDark.withOpacity(0.5),
+      fontSize: 15.sp,
+      fontWeight: FontWeightHelper.medium);
+
   static TextStyle get font15Dark60Regular => GoogleFonts.fredoka(
       color: AppColors.dark60,
       fontSize: 15.sp,
