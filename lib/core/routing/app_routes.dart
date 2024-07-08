@@ -5,7 +5,7 @@ import '../../features/auth/login/ui/screen/login_screen.dart';
 import '../../features/on_boarding/ui/on_boarding/ui/screen/on_boarding_screen.dart';
 
 class AppRoutes {
-  static Route<dynamic>? generateRoute(RouteSettings settings) {
+  Route? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case Routes.onBoarding:
         return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
