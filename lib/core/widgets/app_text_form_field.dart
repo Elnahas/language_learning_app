@@ -7,6 +7,7 @@ import '../theming/app_text_style.dart';
 
 class AppTextFormField extends StatelessWidget {
   final String labelText;
+  final bool? obscureText;
   final String hintText;
   final double? borderRadius;
   final Color? fillColor;
@@ -18,7 +19,7 @@ class AppTextFormField extends StatelessWidget {
       required this.hintText,
       this.borderRadius,
       this.fillColor,
-      this.borderColor});
+      this.borderColor, this.obscureText});
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +30,7 @@ class AppTextFormField extends StatelessWidget {
         verticalSpace(5),
         TextFormField(
           decoration: InputDecoration(
+            
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(borderRadius ?? 16),
           
@@ -40,10 +42,12 @@ class AppTextFormField extends StatelessWidget {
               ),
             ),
             filled: true,
+            
             fillColor: fillColor ?? AppColors.dark.withOpacity(0.05),
             hintText: hintText,
             hintStyle: AppTextStyle.font15GrayDark50Medium,
           ),
+          obscureText: obscureText ?? false,
         )
       ],
     );
