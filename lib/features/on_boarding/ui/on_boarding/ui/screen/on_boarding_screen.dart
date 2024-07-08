@@ -1,6 +1,9 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:language_learning_app/core/helper/extentions.dart';
 import 'package:language_learning_app/core/helper/spacing.dart';
+import 'package:language_learning_app/core/routing/routes.dart';
 import 'package:language_learning_app/core/theming/app_colors.dart';
 import 'package:language_learning_app/core/theming/app_text_style.dart';
 
@@ -43,7 +46,12 @@ class OnBoardingScreen extends StatelessWidget {
               TextSpan(
                   text: "Already have an account? ",
                   style: AppTextStyle.font15Dark60Regular),
-              TextSpan(text: "Log In", style: AppTextStyle.font15DarkMedium)
+              TextSpan(
+                  text: "Log In",
+                  style: AppTextStyle.font15DarkMedium,
+                  recognizer: TapGestureRecognizer()..onTap = () {
+                    context.pushNamed(Routes.login);
+                  })
             ])),
             verticalSpace(30),
           ],
