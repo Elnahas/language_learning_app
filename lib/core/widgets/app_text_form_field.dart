@@ -12,6 +12,7 @@ class AppTextFormField extends StatelessWidget {
   final double? borderRadius;
   final Color? fillColor;
   final Color? borderColor;
+  final Widget? suffixIcon;
 
   const AppTextFormField(
       {super.key,
@@ -19,7 +20,7 @@ class AppTextFormField extends StatelessWidget {
       required this.hintText,
       this.borderRadius,
       this.fillColor,
-      this.borderColor, this.obscureText});
+      this.borderColor, this.obscureText, this.suffixIcon});
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +31,7 @@ class AppTextFormField extends StatelessWidget {
         verticalSpace(5),
         TextFormField(
           decoration: InputDecoration(
+            suffixIcon: suffixIcon,
             
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(borderRadius ?? 16),
@@ -45,7 +47,7 @@ class AppTextFormField extends StatelessWidget {
             
             fillColor: fillColor ?? AppColors.dark.withOpacity(0.05),
             hintText: hintText,
-            hintStyle: AppTextStyle.font15GrayDark50Medium,
+            hintStyle: AppTextStyle.font15GrayDark50Regular,
           ),
           obscureText: obscureText ?? false,
         )

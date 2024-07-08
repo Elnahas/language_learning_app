@@ -1,12 +1,23 @@
+import 'package:dotted_line/dotted_line.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:language_learning_app/core/helper/spacing.dart';
 import 'package:language_learning_app/core/theming/app_text_style.dart';
- import '../../../../../core/widgets/app_text_form_field.dart';
+import '../../../../../core/theming/app_colors.dart';
+import '../../../../../core/widgets/app_text_form_field.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  bool isObscureText = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,8 +25,7 @@ class LoginScreen extends StatelessWidget {
         body: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 20 , vertical: 20),
-
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             width: double.infinity,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,9 +48,123 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
                 verticalSpace(20),
-                AppTextFormField(labelText: "Email Address", hintText: "Enter Your Email"),
+                AppTextFormField(
+                    labelText: "Email Address", hintText: "Enter Your Email"),
                 verticalSpace(20),
-                AppTextFormField(labelText: "Password", hintText: "Enter Your Password"),
+                AppTextFormField(
+                  labelText: "Password",
+                  hintText: "Enter Your Password",
+                  obscureText: isObscureText,
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        isObscureText = !isObscureText;
+                      });
+                    },
+                    icon: isObscureText
+                        ? FaIcon(FontAwesomeIcons.eye)
+                        : FaIcon(FontAwesomeIcons.eyeSlash),
+                    iconSize: 16,
+                  ),
+                ),
+                verticalSpace(15),
+                GestureDetector(
+                    onTap: () {},
+                    child: Text(
+                      "Forgot Password",
+                      style: AppTextStyle.font15RedRegular,
+                    )),
+                verticalSpace(30),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text("Login", style: AppTextStyle.font20WhiteMedium),
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: Size(double.infinity, 56),
+                    backgroundColor: AppColors.blue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                ),
+                verticalSpace(20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsetsDirectional.only(end: 15),
+                        child: DottedLine(
+                          dashLength: 6.0,
+                          dashGapLength: 6.0,
+                          lineThickness: 1.0,
+                          dashColor: Colors.grey,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      "Or",
+                      style: AppTextStyle.font15DarkLighterRegular,
+                    ),
+                    Expanded(
+                        child: Padding(
+                      padding: const EdgeInsetsDirectional.only(start: 15),
+                      child: DottedLine(
+                        dashLength: 6.0,
+                        dashGapLength: 6.0,
+                        lineThickness: 1.0,
+                        dashColor: Colors.grey,
+                      ),
+                    )),
+                  ],
+                ),
+                verticalSpace(20),
+                Row(
+                  children: [
+                    Expanded(
+                      child: ElevatedButton.icon(
+                        onPressed: () {},
+                        label: SvgPicture.asset("assets/svgs/ic_facebook.svg"),
+                        icon: SizedBox(),
+                        style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            minimumSize: Size(0, 50.h),
+                            backgroundColor: Color(0xFFE7E7E7)),
+                      ),
+                    ),
+                    horizontalSpace(10),
+                    Expanded(
+                      child: ElevatedButton.icon(
+                        onPressed: () {},
+                        label: SvgPicture.asset("assets/svgs/ic_google.svg"),
+                        icon: SizedBox(),
+                        style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            minimumSize: Size(0, 50.h),
+                            backgroundColor: Color(0xFFE7E7E7)),
+                      ),
+                    ),
+                  ],
+                ),
+                verticalSpace(20),
+                Center(
+                  child: RichText(
+                      text: TextSpan(children: [
+                    TextSpan(
+                        text: "Not you member? ",
+                        style: AppTextStyle.font17GrayDarkRegular),
+                    TextSpan(
+                        text: "Signup",
+                        style: AppTextStyle.font17BlueMedium,
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            
+                          })
+                  ])),
+                )
               ],
             ),
           ),
