@@ -20,7 +20,9 @@ class AppTextFormField extends StatelessWidget {
       required this.hintText,
       this.borderRadius,
       this.fillColor,
-      this.borderColor, this.obscureText, this.suffixIcon});
+      this.borderColor,
+      this.obscureText,
+      this.suffixIcon});
 
   @override
   Widget build(BuildContext context) {
@@ -32,19 +34,25 @@ class AppTextFormField extends StatelessWidget {
         TextFormField(
           decoration: InputDecoration(
             suffixIcon: suffixIcon,
-            
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(borderRadius ?? 16),
-          
+              borderSide: BorderSide(
+                color: borderColor ?? Colors.transparent,
+              ),
+            ),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(borderRadius ?? 16),
+              borderSide: BorderSide(
+                color: borderColor ?? Colors.transparent,
+              ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(borderRadius ?? 16),
               borderSide: BorderSide(
-                color: borderColor ?? AppColors.blue,
+                color: borderColor ?? AppColors.primaryColor,
               ),
             ),
             filled: true,
-            
             fillColor: fillColor ?? AppColors.dark.withOpacity(0.05),
             hintText: hintText,
             hintStyle: AppTextStyle.font15GrayDark50Regular,

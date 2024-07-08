@@ -6,7 +6,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:language_learning_app/core/helper/spacing.dart';
 import 'package:language_learning_app/core/theming/app_text_style.dart';
-import '../../../../../core/theming/app_colors.dart';
+import 'package:language_learning_app/features/auth/login/ui/widgets/divider_dotted_line.dart';
+import '../../../../../core/widgets/app_elevated_button.dart';
 import '../../../../../core/widgets/app_text_form_field.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -30,6 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+
                 Align(
                   alignment: Alignment.center,
                   child: Image.asset(
@@ -38,7 +40,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 82.h,
                   ),
                 ),
+
                 verticalSpace(10),
+
                 Align(
                   alignment: Alignment.center,
                   child: Text(
@@ -47,7 +51,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     textAlign: TextAlign.center,
                   ),
                 ),
+
                 verticalSpace(20),
+
                 AppTextFormField(
                     labelText: "Email Address", hintText: "Enter Your Email"),
                 verticalSpace(20),
@@ -68,55 +74,19 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 verticalSpace(15),
-                GestureDetector(
-                    onTap: () {},
-                    child: Text(
-                      "Forgot Password",
-                      style: AppTextStyle.font15RedRegular,
-                    )),
+                Align(
+                  alignment: AlignmentDirectional.centerEnd,
+                  child: GestureDetector(
+                      onTap: () {},
+                      child: Text(
+                        "Forgot Password",
+                        style: AppTextStyle.font15RedRegular,
+                      )),
+                ),
                 verticalSpace(30),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: Text("Login", style: AppTextStyle.font20WhiteMedium),
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: Size(double.infinity, 56),
-                    backgroundColor: AppColors.blue,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                ),
+                AppElevatedButton  (buttonText: "Login", onPressed: (){}),
                 verticalSpace(20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsetsDirectional.only(end: 15),
-                        child: DottedLine(
-                          dashLength: 6.0,
-                          dashGapLength: 6.0,
-                          lineThickness: 1.0,
-                          dashColor: Colors.grey,
-                        ),
-                      ),
-                    ),
-                    Text(
-                      "Or",
-                      style: AppTextStyle.font15DarkLighterRegular,
-                    ),
-                    Expanded(
-                        child: Padding(
-                      padding: const EdgeInsetsDirectional.only(start: 15),
-                      child: DottedLine(
-                        dashLength: 6.0,
-                        dashGapLength: 6.0,
-                        lineThickness: 1.0,
-                        dashColor: Colors.grey,
-                      ),
-                    )),
-                  ],
-                ),
+                DividerDottedLine(),
                 verticalSpace(20),
                 Row(
                   children: [
@@ -124,7 +94,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: ElevatedButton.icon(
                         onPressed: () {},
                         label: SvgPicture.asset("assets/svgs/ic_facebook.svg"),
-                        icon: SizedBox(),
                         style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
