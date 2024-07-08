@@ -1,10 +1,9 @@
-import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:language_learning_app/core/helper/spacing.dart';
+import 'package:language_learning_app/core/theming/app_colors.dart';
 import 'package:language_learning_app/core/theming/app_text_style.dart';
 import 'package:language_learning_app/features/auth/login/ui/widgets/divider_dotted_line.dart';
 import '../../../../../core/widgets/app_elevated_button.dart';
@@ -31,7 +30,6 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
                 Align(
                   alignment: Alignment.center,
                   child: Image.asset(
@@ -40,9 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 82.h,
                   ),
                 ),
-
                 verticalSpace(10),
-
                 Align(
                   alignment: Alignment.center,
                   child: Text(
@@ -51,9 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     textAlign: TextAlign.center,
                   ),
                 ),
-
                 verticalSpace(20),
-
                 AppTextFormField(
                     labelText: "Email Address", hintText: "Enter Your Email"),
                 verticalSpace(20),
@@ -84,36 +78,27 @@ class _LoginScreenState extends State<LoginScreen> {
                       )),
                 ),
                 verticalSpace(30),
-                AppElevatedButton  (buttonText: "Login", onPressed: (){}),
+                AppElevatedButton(buttonText: "Login", onPressed: () {}),
                 verticalSpace(20),
                 DividerDottedLine(),
                 verticalSpace(20),
                 Row(
                   children: [
                     Expanded(
-                      child: ElevatedButton.icon(
+                      child: AppElevatedButton(
+                        IconPathSvg: "assets/svgs/ic_facebook.svg",
                         onPressed: () {},
-                        label: SvgPicture.asset("assets/svgs/ic_facebook.svg"),
-                        style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            minimumSize: Size(0, 50.h),
-                            backgroundColor: Color(0xFFE7E7E7)),
+                        backgroundColor: AppColors.mercury,
+                        height: 50,
                       ),
                     ),
                     horizontalSpace(10),
                     Expanded(
-                      child: ElevatedButton.icon(
+                      child: AppElevatedButton(
+                        IconPathSvg: "assets/svgs/ic_google.svg",
                         onPressed: () {},
-                        label: SvgPicture.asset("assets/svgs/ic_google.svg"),
-                        icon: SizedBox(),
-                        style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            minimumSize: Size(0, 50.h),
-                            backgroundColor: Color(0xFFE7E7E7)),
+                        backgroundColor: AppColors.mercury,
+                        height: 50,
                       ),
                     ),
                   ],
@@ -128,10 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     TextSpan(
                         text: "Signup",
                         style: AppTextStyle.font17BlueMedium,
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () {
-                            
-                          })
+                        recognizer: TapGestureRecognizer()..onTap = () {})
                   ])),
                 )
               ],
