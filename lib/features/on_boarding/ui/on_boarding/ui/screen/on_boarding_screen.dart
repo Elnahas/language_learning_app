@@ -1,11 +1,9 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:language_learning_app/core/helper/extentions.dart';
 import 'package:language_learning_app/core/helper/spacing.dart';
 import 'package:language_learning_app/core/routing/routes.dart';
-import 'package:language_learning_app/core/theming/app_colors.dart';
-import 'package:language_learning_app/core/theming/app_text_style.dart';
+import 'package:language_learning_app/core/widgets/app_elevated_button.dart';
+import 'package:language_learning_app/core/widgets/app_rich_text.dart';
 
 import '../widgets/page_view_widget.dart';
 
@@ -18,43 +16,24 @@ class OnBoardingScreen extends StatelessWidget {
 
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            verticalSpace(100),
-            PageViewWidget(controller: controller),
-            verticalSpace(50),
-            Container(
-              width: double.infinity,
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: ElevatedButton(
-                onPressed: () {},
-                child: Text(
-                  "Chose a Language",
-                  style: AppTextStyle.font20WhiteMedium,
-                ),
-                style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(vertical: 10.h),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.r),
-                    ),
-                    backgroundColor: AppColors.blue),
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          child: Column(
+            children: [
+              verticalSpace(100),
+              PageViewWidget(controller: controller),
+              verticalSpace(50),
+              AppElevatedButton(buttonText: "Chose a Language", onPressed: () {}),
+              verticalSpace(30),
+              AppRichText(
+                mainText: "Already have an account? ",
+                actionText: "Log In",
+                onTap: () {
+                  context.pushNamed(Routes.login);
+                },
               ),
-            ),
-            verticalSpace(30),
-            RichText(
-                text: TextSpan(children: [
-              TextSpan(
-                  text: "Already have an account? ",
-                  style: AppTextStyle.font15Dark60Regular),
-              TextSpan(
-                  text: "Log In",
-                  style: AppTextStyle.font15DarkMedium,
-                  recognizer: TapGestureRecognizer()..onTap = () {
-                    context.pushNamed(Routes.login);
-                  })
-            ])),
-            verticalSpace(30),
-          ],
+            ],
+          ),
         ),
       ),
     );
