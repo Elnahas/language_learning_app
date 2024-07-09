@@ -9,26 +9,22 @@ class LoginImageAndText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Align(
-          alignment: Alignment.center,
-          child: Image.asset(
+    return Center(
+      child: Column(
+        children: [
+          Image.asset(
             "assets/images/login.png",
             width: 105.w,
             height: 82.h,
           ),
-        ),
-        verticalSpace(10),
-        Align(
-          alignment: Alignment.center,
-          child: Text(
+          verticalSpace(10),
+          Text(
             "For free, join now and\n start learning",
             style: AppTextStyle.font22DarkMedium,
             textAlign: TextAlign.center,
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

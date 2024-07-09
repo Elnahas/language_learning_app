@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:language_learning_app/core/helper/extentions.dart';
 import 'package:language_learning_app/core/helper/spacing.dart';
 import 'package:language_learning_app/features/auth/login/ui/widgets/divider_dotted_line.dart';
+import 'package:language_learning_app/features/auth/signup/ui/widgets/signup_form.dart';
 import '../../../../../core/routing/routes.dart';
+import '../../../../../core/theming/app_text_style.dart';
 import '../../../../../core/widgets/app_elevated_button.dart';
 import '../../../../../core/widgets/app_rich_text.dart';
-import '../widgets/login_form.dart';
-import '../widgets/login_image_and_text.dart';
-import '../widgets/social_buttons_row.dart';
+import '../../../login/ui/widgets/social_buttons_row.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class SignupScreen extends StatelessWidget {
+  const SignupScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Login")),
+        appBar: AppBar(title: Text("Signup")),
         body: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Container(
@@ -24,19 +24,29 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                LoginImageAndText(),
+                Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    "Create an Account",
+                    style: AppTextStyle.font22DarkMedium,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
                 verticalSpace(20),
-                LoginForm(),
+                SignupForm(),
                 verticalSpace(30),
-                AppElevatedButton(buttonText: "Login", onPressed: () {}),
+                AppElevatedButton(buttonText: "Signup", onPressed: () {}),
                 verticalSpace(20),
                 DividerDottedLine(),
                 verticalSpace(20),
                 SocialButtonsRow(),
                 verticalSpace(30),
-                AppRichText(mainText: "Not you member? ", actionText: "Signup" , onTap: () { 
-                  context.pushNamed(Routes.signup);
-                 },),
+                AppRichText(
+                    mainText: "Already you member? ",
+                    actionText: "Login",
+                    onTap: () {
+                      context.pushNamed(Routes.login);
+                    }),
               ],
             ),
           ),
